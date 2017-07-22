@@ -14,6 +14,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="description" content="This is my page">
 	</head>
 	<body>
-		<a href="user/userlists">请点击这里</a>
+		<a href="mannager/main">请点击这里</a>
 	</body>
 </html>

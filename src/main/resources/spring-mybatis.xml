@@ -63,6 +63,23 @@
                 <value>classpath:com/lirs/bysj/mapper/**/*.xml</value>
             </array>
         </property>
+         <property name="plugins">
+			<array>
+				<bean class="com.github.pagehelper.PageHelper">
+					<property name="properties" >
+						<value>
+							dialect=mysql
+							offsetAsPageNum=true
+							rowBoundsWithCount=true
+							pageSizeZero=truereasonable=false
+							reasonable=true
+							params=pageNum=pageHelperStart;pageSize=pageHelperRows;
+							supportMethodsArguments=false
+						</value>
+					</property>
+				</bean>
+			</array>
+		</property> 
 	</bean>
 
 	<!-- DAO接口所在包名，Spring会自动查找其下的类 -->

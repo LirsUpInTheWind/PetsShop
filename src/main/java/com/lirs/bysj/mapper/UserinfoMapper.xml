@@ -1,25 +1,65 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.lirs.bysj.MapperDao.UserinfoMapper" >
+  
+  <select id="selectAlluserinfo" resultMap="BaseResultMap"> 
+     select ui.*,u.* from userinfo ui,user u where ui.u_id=u.u_id
+  </select>
+    
+  <select id="selectByFy" resultMap="BaseResultMap" parameterType="Map">
+		SELECT *
+		FROM userinfo
+		<if test="a!=null">
+			<where> 
+				<if test="phone!=null and phone!=''"> ui_phone=#{phone}</if>
+				<if test="name!=null and name!=''"> or ui_rname=#{name}</if>
+			</where>
+			LIMIT #{a},#{b}
+		</if>
+	</select>
+	
+  
+  <!-- 根据分页数据start 和size查询数据 -->
+	<select id="findByPage" parameterType="Map" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from userinfo
+		<if test="start!=null and size!=null">
+			limit #{start},#{size}
+		</if>
+	</select>
+	
+	<!-- 查询用户记录总数 -->
+	<select id="selectCount" resultType="int">
+		select count(*) from userinfo
+	</select>
+	
+	
+  
+  <!-- 定义userinfo结果集 -->
   <resultMap id="BaseResultMap" type="com.lirs.bysj.pojo.Userinfo" >
- 
     <id column="ui_id" property="uiId" jdbcType="INTEGER" />
     <result column="ui_rname" property="uiRname" jdbcType="VARCHAR" />
     <result column="ui_adress" property="uiAdress" jdbcType="VARCHAR" />
     <result column="ui_phone" property="uiPhone" jdbcType="VARCHAR" />
     <result column="ui_score" property="uiScore" jdbcType="INTEGER" />
-    <result column="u_id" property="uId" jdbcType="INTEGER" />
+    <!-- 实现一对一 -->
+    	<association property="user" javaType="com.lirs.bysj.pojo.User">
+    	    <id column="u_id" property="uId" jdbcType="INTEGER" />
+		    <result column="usernumber" property="usernumber" jdbcType="INTEGER" />
+		    <result column="userpwd" property="userpwd" jdbcType="VARCHAR" />
+		    <result column="name" property="name" jdbcType="VARCHAR" />
+		    <result column="time" property="time" jdbcType="VARCHAR" />
+		    <result column="type" property="type" jdbcType="INTEGER" />
+    	</association>
   </resultMap>
   
-  <sql id="Base_Column_List" >
-    
+  
+  
+  
+  <sql id="Base_Column_List" >    
     ui_id, ui_rname, ui_adress, ui_phone, ui_score, u_id
   </sql>
-  
-  <select id="selectAll" resultType="com.lirs.bysj.pojo.Userinfo">
-      select * from userinfo
-  </select>
-  
   
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
   
