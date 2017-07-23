@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <head>
 <%@ include file="mannager.jsp"%>	
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- bootstrap -->
 	<link rel="stylesheet" href="<%=basePath%>/plugs/bootstrap/css/bootstrap.min.css">
 	<script type="text/javascript" src="<%=basePath%>/plugs/bootstrap/js/bootstrap.min.js"></script>	
@@ -25,7 +26,7 @@
 		<div class="container">
 			<div class="row">
 			<!-- 搜索框 -->			
-					<div>						
+					 <div>						
 						<input type="text" class="am-form-field am-input-sm am-input-xm" name="name" placeholder="请输入姓名" style="width:200px;margin-left:20px;">							
 						<input type="text" class="am-form-field am-input-sm am-input-xm" name="phone" placeholder="请输入手机号" style="width:200px;margin-left:20px;">
 						<button id="search" class="am-btn am-radius am-btn-xs am-btn-success" type="button" style="margin-top:10px;margin-left:20px">搜索!</button>									
@@ -38,7 +39,7 @@
 		</div>		
    </div>
      
-    <script type="text/javascript">
+    <script type="text/javascript">    
    	 class BstpTable{
 		constructor(obj) {
 			this.obj=obj;
@@ -77,6 +78,7 @@
 	            sidePagination: "server", 	//分页方式：client客户端分页，server服务端分页（*）
 	            showRefresh:false,	//刷新按钮	   
 	            cache: false,   //缓存  不启用    
+	            showRefresh: true,     
 	            toolbar: '#toolbar',                //工具按钮用哪个容器
 	            clickToSelect: true,				//选中行
 	           // cardView: true,                    //是否显示详细视图
@@ -109,29 +111,57 @@
 				 {field: 'uiScore',
 				  title: '积分'
 				 },
-				 {field: 'user',
-				  title: '登陆信息用户'
+				 {field: 'user.uId',
+				  title: '用户登录表id'
 				 },
 				 {field: 'tool',
 				  title: '操作',	
-					   formatter:function(value,row,index){		
-						   
+					   formatter:function(value,row,index){								   
 					    var element = 
 					    "<button class='edite btn btn-success btn-sm'>编辑</button>"+" "+				   			    
 					    "<button class='detail btn btn-success btn-sm'>详情</button>"+" "+				   			    
-					    "<button class='delet btn btn-success btn-sm'>删除</button>";		   			    
-					    return element; 
-					    
+					    "<button class='delet btn btn-success btn-sm'>删除</button>";			    					
+					    /*   可以分离点击事件函数
+					    '<a onclick="edit(\''+ row.uiId + '\')">编辑</a> ';	 */	   			    
+					    return element; 					    
 					},events:{
-				 	'click .detail':function(e,value,row,index){
-				 					alert(row.uiId)
-				 												}, 
+				 	'click .detail':function(e,value,row,index){			 					 			
+				 		$.ajax({
+								type : 'post',
+								contentType:'application/x-www-form-urlencoded; charset=UTF-8',
+								dataType : 'json',
+								url : '/PetsShop/memberMannager/getAlluserlogin?uid=' +row.user.uId,					
+								success : function(data) {
+									
+								alert("用户昵称："+data.name+"\n\n"+
+									  "用户注册时间: "+data.time+"\n\n"+
+									  "用户登录账号: "+data.usernumber
+									  
+								);				
+								} 
+							});
+				 		 }, 
 				 	'click .edite':function(e,value,row,index){
-				 					alert(row.uiPhone)
+				 					alert(row.uiPhone);
 				 											  },
 				 	'click .delet':function(e,value,row,index){
-				 					alert(row.uiAdress)
-				 											  }
+				 				var mymessage=confirm("操作不可逆,确定删除吗？");  			 	  			   
+				 					if(mymessage==true)  
+							 		    {  
+				 						 $.ajax({
+				 							 type:'post',
+				 							 contentType:'application/x-www-form-urlencoded;charset=UTF-8',
+				 							 dataType:'json',
+				 							 url:'/PetsShop/memberMannager/deleteuserinfo?uiid='+row.uiId ,
+				 							 success : function(data) {	
+				 										 				 						 	 
+				 						 	 }
+				 						 });
+				 						 alert("删除成功");
+							 		    } else if(mymessage==false)  {  
+							 	     //   document.write("不要删除");  
+							 	    }  
+				 		  }		 											  
 					 }
 				 
 				  }
@@ -140,11 +170,7 @@
 		 }
 	}	
    	
-   	 
-   	 
-   	 
-   	 
-	var bstpTable=new BstpTable($("table"));
+   	 var bstpTable=new BstpTable($("table"));
 	bstpTable.inint({})	
 	$("#search").click(function(){
 		var searchArgs={
@@ -152,14 +178,14 @@
 		 	phone:$("input[phone='phone']").val(),
 		}
 		bstpTable.inint(searchArgs)
-    })  	 
+    })  	    
+    	function edit(a){
+			alert(a);
+	}
+   
    	</script>
    <hr />   
-   
-   
-   
-         
-	 <div class="foods" Style="margin-top:125px;">
+    <div class="foods" Style="margin-top:125px;">
         <ul>
           若有疑问,请访问www.lirs.com <a href="http://www.cssmoban.com/" target="_blank" title="致电">后台管理</a> -  More information<a href="http://www.cssmoban.com/" title="网页模板" target="_blank">我的网站</a>
         </ul>
@@ -169,6 +195,3 @@
       </div>
 </div>
 </div>
-
-
-

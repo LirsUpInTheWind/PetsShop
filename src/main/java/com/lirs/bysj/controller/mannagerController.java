@@ -48,6 +48,7 @@ public class mannagerController {
 			System.out.println(userinfo.getUiAdress()+""+userinfo.getUiRname()+""+userinfo.getUser().getName());
 			System.out.println(userinfo.getUiAdress()+""+userinfo.getUiRname()+""+userinfo.getUser().getName());
 		}
+		
 		session.setAttribute("list", list);
 		return "userinfo";
 	}

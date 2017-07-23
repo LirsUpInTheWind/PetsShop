@@ -33,9 +33,7 @@
 	<select id="selectCount" resultType="int">
 		select count(*) from userinfo
 	</select>
-	
-	
-  
+
   <!-- 定义userinfo结果集 -->
   <resultMap id="BaseResultMap" type="com.lirs.bysj.pojo.Userinfo" >
     <id column="ui_id" property="uiId" jdbcType="INTEGER" />
@@ -54,9 +52,7 @@
     	</association>
   </resultMap>
   
-  
-  
-  
+ 
   <sql id="Base_Column_List" >    
     ui_id, ui_rname, ui_adress, ui_phone, ui_score, u_id
   </sql>
@@ -68,11 +64,13 @@
     from userinfo
     where ui_id = #{uiId,jdbcType=INTEGER}
   </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     
     delete from userinfo
     where ui_id = #{uiId,jdbcType=INTEGER}
   </delete>
+  
   <insert id="insert" parameterType="com.lirs.bysj.pojo.Userinfo" >
    
     insert into userinfo (ui_id, ui_rname, ui_adress, 

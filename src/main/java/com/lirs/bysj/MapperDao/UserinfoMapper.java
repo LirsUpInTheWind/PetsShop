@@ -10,7 +10,7 @@ import com.lirs.bysj.pojo.Userinfo;
 
 
 public interface UserinfoMapper {
-    
+    //删除会员信息，包括会员登陆信息
     int deleteByPrimaryKey(Integer uiId);
   
     int insert(Userinfo record);

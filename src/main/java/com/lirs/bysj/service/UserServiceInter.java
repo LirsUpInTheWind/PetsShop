@@ -8,4 +8,5 @@ import com.lirs.bysj.pojo.User;
 
 public interface UserServiceInter {
 	List<User> selectUserList();
+	User selectAlluser(Integer uid);
 }

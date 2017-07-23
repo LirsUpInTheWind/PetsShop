@@ -20,7 +20,6 @@ public class UserService implements userinfoService{
 	private UserinfoMapper userinfomapper;
 	@Autowired
 	private UserMapper usermapper;
-	
 	public List<Userinfo> selectAlluserinfo() {
 		List<Userinfo> list = userinfomapper.selectAlluserinfo();
 		return list;
@@ -31,8 +30,7 @@ public class UserService implements userinfoService{
 	@Override
 	public Map<String, Object> selectByFy(Map<String, Object> param) {
 		
-		//bootstrap-table要求服务器返回的json须包含：totlal，rows
-		
+		//bootstrap-table要求服务器返回的json须包含：totlal，rows		
         Map<String,Object> result = new HashMap<String,Object>();
         int total=userinfomapper.selectByFy(null).size();
         List<Userinfo> rows= userinfomapper.selectByFy(param);
@@ -40,7 +38,6 @@ public class UserService implements userinfoService{
         result.put("rows",rows);
         return result;
 	}
-
 	
 	//分页测试
 	@Override
@@ -70,9 +67,8 @@ public class UserService implements userinfoService{
 	}
 
 	@Override
-	public List<Userinfo> selectAlluser() {
-		// TODO Auto-generated method stub
-		return null;
+	public int deleteUserinfo(Integer uiid) {	
+		return userinfomapper.deleteByPrimaryKey(uiid);
 	}
 
 

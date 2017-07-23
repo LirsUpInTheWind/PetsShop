@@ -16,6 +16,11 @@ public class userservice2 implements UserServiceInter{
 	public List<User> selectUserList() {
 		return this.usermapper.selectUserList();
 	}
+	@Override
+	public User selectAlluser(Integer uid) {
+		// TODO Auto-generated method stub
+		return usermapper.selectByPrimaryKey(uid);
+	}
 	
 	
 }

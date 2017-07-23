@@ -23,7 +23,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link rel="stylesheet" href="<%=basePath%>/assets/css/admin.css">
 <script src="<%=basePath%>/assets/js/jquery.min.js"></script>
 <script src="<%=basePath%>/assets/js/app.js"></script>
-<script src="<%=basePath%>/js/jquery-1.7.2.min.js" type="text/javascript"></script>
+<script src="<%=basePath%>/js/jquery-3.1.1.min.js" type="text/javascript"></script>
 <!-- 分页插件 -->
 		<link rel="stylesheet" href="<%=basePath%>plugs/bootstrap-table/bootstrap-table.min.css">
 	    <script type="text/javascript" src="<%=basePath%>plugs/bootstrap-table/bootstrap-table.min.js"></script>
