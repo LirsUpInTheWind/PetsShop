@@ -1,0 +1,19 @@
+body{
+	background-image: url(../img/bg_img.jpg);
+	background-size: cover;
+	margin:0 auto;
+}
+.login-body{
+	height: 300px;
+	width: 500px;
+	margin:100px auto;
+	background-color: #9D9D9D;
+
+}
+span{
+	font-family: "Î¢ÈíÑÅºÚ";
+	font-size: large;
+}
+footer{
+	margin-top: 280px;
+}
