@@ -76,10 +76,11 @@ $(function() {
 			  }
  		})
  	}
+ 	
 	 	function loadTable() {
 			$('#table').bootstrapTable(
 							{
-								url : '/sys/staff/queryStaff.do',
+								url : '/emp/QueryEmp',
 								dataType : "json",
 								toolbar : '#toolbar', //工具按钮用哪个容器
 								pagination : true, //分页

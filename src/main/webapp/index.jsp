@@ -29,7 +29,7 @@
 		    <a href="#staffMsg" class="nav-header menu-first collapsed" data-toggle="collapse">
 		    <i class="icon-user icon-large"></i>我的员工管理</a>
 		    <ul id="staffMsg" class="nav nav-list collapse menu-second">
-		        <li><a href="${ctx}/sys/staff.do" target="mainFrame"><i class="icon-star"></i>员工信息管理</a></li>
+		        <li><a href="${ctx}/Emp/QueryEmp" target="mainFrame"><i class="icon-star"></i>员工信息管理</a></li>
 		        <li><a href="${ctx}/sys/salary.do" target="mainFrame"><i class="icon-certificate"></i>工资信息管理</a></li>
 		    </ul>
 		    

@@ -17,6 +17,7 @@
 		<a href="#" ><i class="icon-search icon-2x" title="搜索" onclick="search()"> </i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<a href="#" ><i class="icon-plus-sign icon-2x" title="新增员工" onclick="add()"> </i></a>
 	</div>
+	
 	<div id="add"> 
     	 <p><span style="font-family: '微软雅黑';font-size: 18px;">员工姓名：</span><input type="text" id="repairName"/></p>
     	 <p><span style="font-family: '微软雅黑';font-size: 18px;">&nbsp;&nbsp;&nbsp;手机号：</span><input type="text" id="phone"/></p>
@@ -24,6 +25,7 @@
     	  <p><span style="font-family: '微软雅黑';font-size: 18px;">&nbsp;&nbsp;&nbsp;月工资：</span><input type="text" id="monthlyWage"/></p>
     	 <p><span style="font-family: '微软雅黑';font-size: 18px;">身份证号：</span><input type="text" id="IDCard"/></p>
 	</div>
+	
 	<div id="edit">
 		 <p><span style="font-family: '微软雅黑';font-size: 18px;">员工编号：</span><input type="text" id="repairmanNo" readonly="readonly" /></p>
 		 <p><span style="font-family: '微软雅黑';font-size: 18px;">员工姓名：</span><input type="text" id="repairmanName"/></p>

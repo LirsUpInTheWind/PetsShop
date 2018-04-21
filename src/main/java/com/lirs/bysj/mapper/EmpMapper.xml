@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE  mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lirs.bysj.MapperDao.EmpMapperDao">
+	<!-- 根据索引返回员工信息  -->
+	<select id="queryEmpByIndex" parameterType="map" resultType="com.lirs.bysj.pojo.Emp">
+		SELECT
+			*
+		FROM
+			emp
+		WHERE 1=1
+			<if test="key != null and key !='' "> <!-- 没有输入或为空变成全查询 -->
+		 	AND 
+		 			( e_name like CONCAT('%',#{key},'%')
+		 		OR 
+		 			e_id like CONCAT('%',#{key},'%') )
+			</if>
+		ORDER BY 
+			statue 	DESC
+		LIMIT 
+			#{pageIndex},#{pageSize}
+	</select>
+	
+	<!-- 返回员工总数  -->
+	<select id="QueryEmpCount" parameterType="map" resultType="int">
+		SELECT
+			COUNT(1)
+		FROM
+			emp
+		WHERE 1=1
+			<if test="key != null and key !='' ">
+		 	AND 
+		 			( e_name like CONCAT('%',#{key},'%')
+		 		OR 
+		 			e_id like CONCAT('%',#{key},'%') )
+			</if>
+		ORDER BY 
+		statue 	DESC
+	</select>
+	
+</mapper>
