@@ -10,5 +10,6 @@ public class EmpController {
 	public String empa(){
 		return "empManage/empManage";
 	}
+	
 
 }
