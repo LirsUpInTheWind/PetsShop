@@ -1,5 +1,7 @@
 package com.lirs.bysj.service.impl;
 
+import java.util.HashMap;
+
 import java.util.List;
 import java.util.Map;
 
@@ -24,6 +26,5 @@ public class EmpServiceImpl implements EmpService{
 		
 		return mapper.QueryEmpCount(map);
 	}
-
 
 }

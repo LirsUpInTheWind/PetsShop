@@ -15,7 +15,7 @@
 		 			e_id like CONCAT('%',#{key},'%') )
 			</if>
 		ORDER BY 
-			statue 	DESC
+			e_statue 	DESC
 		LIMIT 
 			#{pageIndex},#{pageSize}
 	</select>
@@ -34,7 +34,7 @@
 		 			e_id like CONCAT('%',#{key},'%') )
 			</if>
 		ORDER BY 
-		statue 	DESC
+		e_statue 	DESC
 	</select>
 	
 </mapper>

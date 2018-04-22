@@ -60,7 +60,7 @@
 		<!-- 自动扫描mapping.xml文件 -->
 		<property name="mapperLocations">
             <array>
-                <value>classpath:com/lirs/bysj/mapper/**/*.xml</value>
+                <value>classpath:com/lirs/bysj/mapper/*.xml</value><!-- mapper/**/*.xml -->
             </array>
         </property>
          <property name="plugins">

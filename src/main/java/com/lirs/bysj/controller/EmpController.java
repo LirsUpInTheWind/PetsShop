@@ -21,7 +21,7 @@ public class EmpController {
 	@Autowired
 	private EmpService empservice;
 	
-	@RequestMapping(value = "QueryEmp",produces = "application/json;charset=utf-8")
+	@RequestMapping(value = "QueryEmp.do",produces = "application/json;charset=utf-8")
 	public @ResponseBody String queryStaff(Integer pageIndex,Integer pageSize,String key){
 		JSONObject json = new JSONObject();
 		String page = null;
@@ -32,10 +32,13 @@ public class EmpController {
 			map.put("pageSize", pageSize);
 			map.put("key", key);
 			list = empservice.QueryEmpByIndex(map);
+			System.out.println(list);
 			int count = empservice.QueryEmpCount(map);
+			System.out.println("你好2");
 			json.put("rows", list);
 			json.put("total", count);
 			page = json.toString();
+			
 		} catch (Exception e) {
 		}
 		return page;

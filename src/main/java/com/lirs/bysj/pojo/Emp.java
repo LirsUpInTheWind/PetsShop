@@ -11,6 +11,24 @@ public class Emp {
 	private int E_salary;
 	private String E_time;//入职时间
 	private int E_statue;//状态 1在职 0离职
+	
+	public Emp() {
+	
+	}
+	public Emp(int e_id, String e_name, char e_sex, String e_tel, String e_adress, String e_pwd, char e_class,
+			int e_salary, String e_time, int e_statue) {
+		super();
+		E_id = e_id;
+		E_name = e_name;
+		E_sex = e_sex;
+		E_tel = e_tel;
+		E_adress = e_adress;
+		E_pwd = e_pwd;
+		E_class = e_class;
+		E_salary = e_salary;
+		E_time = e_time;
+		E_statue = e_statue;
+	}
 	public int getE_id() {
 		return E_id;
 	}
@@ -70,6 +88,12 @@ public class Emp {
 	}
 	public void setE_statue(int e_statue) {
 		E_statue = e_statue;
+	}
+	@Override
+	public String toString() {
+		return "Emp [E_id=" + E_id + ", E_name=" + E_name + ", E_sex=" + E_sex + ", E_tel=" + E_tel + ", E_adress="
+				+ E_adress + ", E_pwd=" + E_pwd + ", E_class=" + E_class + ", E_salary=" + E_salary + ", E_time="
+				+ E_time + ", E_statue=" + E_statue + "]";
 	}
 	
 	

@@ -80,7 +80,7 @@ $(function() {
 	 	function loadTable() {
 			$('#table').bootstrapTable(
 							{
-								url : '/emp/QueryEmp',
+								url : '/petshop/Emp/QueryEmp.do',
 								dataType : "json",
 								toolbar : '#toolbar', //工具按钮用哪个容器
 								pagination : true, //分页
@@ -100,7 +100,7 @@ $(function() {
 								pageList : [ 10, 25, 50, 100 ], //可供选择的每页的行数（*） 
 								columns : [
 										{
-											field : 'id',
+											field : 'E_id',
 											title : '序号',
 											align : 'center',
 											width:'50',
@@ -109,40 +109,60 @@ $(function() {
 											}
 										},
 										{
-											field : 'repairmanNo',
-											title : '员工编号',
-											align : 'center',
-											width:'50',
-										},
-										{
-											field : 'repairmanName',
+											field : 'E_name',
 											title : '员工姓名',
 											align : 'center',
-											width:'100'
+											width:'20',
 										},
 										{
-											field : 'phone',
+											field : 'E_sex',
+											title : '员工性别',
+											align : 'center',
+											width:'10'
+										},
+										{
+											field : 'E_tel',
 											title : '手机号码',
 											align : 'center',
-											width:'100'
+											width:'50'
 										},
 										{
-											field : 'hourlyPay',
-											title : '小时工资',
+											field : 'E_adress',
+											title : '家庭住址',
 											align : 'center',
-											width:'100'
+											width:'50'
 										},
 										{
-											field : 'intoDate',
-											title : '入厂日期',
+											field : 'E_pwd',
+											title : '登陆密码',
 											align : 'center',
-											width:'100'
+											width:'50'
+										},
+										
+										{
+											field : 'E_class',
+											title : '员工等级',
+											align : 'center',
+											width:'10'
+										},
+										
+										{
+											field : 'E_salary',
+											title : '员工薪水',
+											align : 'center',
+											width:'20'
+										},					
+										{
+											field : 'E_time',
+											title : '入职时间',
+											align : 'center',
+											width:'20'
 										},
 										{
-											field : 'statu',
-											title : '状态',
+											field : 'E_statue',
+											title : '员工状态',
 											align : 'center',
-											width:'50',
+											width:'10',
 											formatter : function(value, row, index) {
 												var statu = "";
 												if (row.statu==0) {
@@ -155,16 +175,16 @@ $(function() {
 										},
 										{
 											title : '操作',
-											field : 'repairmanNo',
+											field : 'E_id',
 											align : 'center',
-											width:'100',
+											width:'20',
 											formatter : function(value, row, index) {
-												var e = '<a href="#"><i class="icon-edit" title="编辑" onclick="editRepair(\''+row.repairmanNo +'\')" ></i></a>';
+												var e = '<a href="#"><i class="icon-edit" title="编辑" onclick="editRepair(\''+row.E_id +'\')" ></i></a>';
 												var c = "";
 												if (row.statu==0) {
-													c = '<a href="#"><i class="icon-lock" title="重新入职" onclick="editStatus(\''+row.repairmanNo +'\',\''+row.statu +'\')"></i></a>';
+													c = '<a href="#"><i class="icon-lock" title="重新入职" onclick="editStatus(\''+row.E_id +'\',\''+row.statu +'\')"></i></a>';
 												}else{
-													c = '<a href="#"><i class="icon-unlock" title="离职" onclick="editStatus(\''+row.repairmanNo +'\',\''+row.statu +'\')"></i></a>';
+													c = '<a href="#"><i class="icon-unlock" title="离职" onclick="editStatus(\''+row.E_id +'\',\''+row.statu +'\')"></i></a>';
 												}
 												
 												return e+ " | " + c;
@@ -173,6 +193,7 @@ $(function() {
 								]
 							});
 		}
+	 	
 	 	function loadDialog() {
 	 		$("#add").dialog({
 				autoOpen : false,
